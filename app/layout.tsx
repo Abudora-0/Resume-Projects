@@ -22,10 +22,9 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-/** Swap this for the deployed domain once the site is live. */
-const SITE = "https://github.com/Abudora-0/Resume-Projects";
+const SITE = "https://abudora-resume.vercel.app";
 
-const TITLE = "Muhammad Abdullah, frontend and full-stack engineer";
+const TITLE = "Abudora, portfolio of Muhammad Abdullah";
 const DESCRIPTION =
   "Eight shipped products, each built inside its own deliberate design language. An exhibition catalogue in Next.js and TypeScript, with no animation dependencies.";
 
@@ -33,10 +32,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
     default: TITLE,
-    template: "%s, Muhammad Abdullah",
+    template: "%s, Abudora",
   },
   description: DESCRIPTION,
   keywords: [
+    "Abudora",
     "Muhammad Abdullah",
     "frontend engineer",
     "full-stack developer",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE,
-    siteName: "Muhammad Abdullah",
+    siteName: "Abudora",
     title: TITLE,
     description: DESCRIPTION,
   },

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { projects } from "@/lib/projects";
+import { projects, EMAIL, GITHUB, LINKEDIN } from "@/lib/projects";
 
 type Command = {
   id: string;
@@ -11,8 +11,6 @@ type Command = {
   accent?: string;
   run: () => void;
 };
-
-const EMAIL = "m.abdullah21306@gmail.com";
 
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -48,6 +46,19 @@ export function CommandPalette() {
         accent: project.accent,
         run: () => scrollToId(`project-${project.slug}`),
       });
+      if (project.live && project.embeddable) {
+        open.push({
+          id: `frame-${project.slug}`,
+          label: `${project.name}: live preview`,
+          hint: "Opens in a frame",
+          group: "Open",
+          accent: project.accent,
+          run: () =>
+            window.dispatchEvent(
+              new CustomEvent("portfolio:preview", { detail: project.slug }),
+            ),
+        });
+      }
       if (project.live) {
         open.push({
           id: `live-${project.slug}`,
@@ -77,6 +88,20 @@ export function CommandPalette() {
     }));
 
     const actions: Command[] = [
+      {
+        id: "linkedin",
+        label: "Open LinkedIn",
+        hint: "m-abdullah",
+        group: "Actions",
+        run: () => window.open(LINKEDIN, "_blank", "noopener,noreferrer"),
+      },
+      {
+        id: "github",
+        label: "Open GitHub profile",
+        hint: "Abudora-0",
+        group: "Actions",
+        run: () => window.open(GITHUB, "_blank", "noopener,noreferrer"),
+      },
       {
         id: "copy-email",
         label: "Copy email address",

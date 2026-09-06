@@ -3,6 +3,8 @@
 import type { Project } from "@/lib/projects";
 import { ArrowUpRight } from "@/components/icons";
 import { useAccent } from "@/components/AccentProvider";
+import { GLYPHS } from "@/components/brand/glyphs";
+import { ProjectPreview } from "@/components/ProjectPreview";
 
 export function ProjectCard({
   project,
@@ -17,30 +19,37 @@ export function ProjectCard({
   return (
     <article
       id={`project-${project.slug}`}
-      className="group relative grid scroll-mt-28 gap-x-10 gap-y-6 border-t border-edge py-12 md:grid-cols-12 md:py-16"
+      className="group relative grid scroll-mt-28 gap-x-10 gap-y-8 border-t border-edge py-12 md:grid-cols-12 md:py-16"
       style={{ ["--pc" as string]: project.accent }}
       onMouseEnter={() => possess(project.accent)}
       onMouseLeave={release}
       onFocus={() => possess(project.accent)}
       onBlur={release}
     >
-      {/* accent tick */}
       <span
         aria-hidden
         className="absolute left-0 top-0 h-px w-0 bg-[var(--pc)] transition-all duration-500 group-hover:w-full"
       />
 
       {/* left column, identity */}
-      <div className="md:col-span-4 md:pr-6">
-        <div className="flex items-baseline justify-between gap-4">
+      <div className="md:col-span-5 md:pr-6">
+        <div className="flex items-start justify-between gap-4">
           <span className="mono-label">{num}</span>
-          <span className="mono-label">{project.year}</span>
+          <svg viewBox="0 0 64 64" className="card-glyph" aria-hidden>
+            {GLYPHS[project.glyph](project.accent)}
+          </svg>
         </div>
-        <h3 className="mt-4 font-display text-3xl font-medium tracking-tight text-ink md:text-[2.1rem] md:leading-[1.05]">
+
+        <h3 className="mt-3 font-display text-3xl font-medium tracking-tight text-ink md:text-[2.1rem] md:leading-[1.05]">
           {project.name}
         </h3>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-soft">
           {project.tagline}
+        </p>
+
+        <p className="mono-label mt-6 text-[var(--pc)]">Design language</p>
+        <p className="mt-2 font-display text-lg italic leading-snug text-ink/90">
+          {project.designLanguage}
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -66,17 +75,15 @@ export function ProjectCard({
             Source
             <ArrowUpRight className="size-3" />
           </a>
+          <span className="mono-label">{project.year}</span>
         </div>
       </div>
 
-      {/* right column, detail */}
-      <div className="md:col-span-8">
-        <p className="mono-label text-[var(--pc)]">Design language</p>
-        <p className="mt-2 font-display text-lg italic leading-snug text-ink/90 md:text-xl">
-          {project.designLanguage}
-        </p>
+      {/* right column, preview and detail */}
+      <div className="md:col-span-7">
+        <ProjectPreview project={project} />
 
-        <p className="mt-6 max-w-2xl text-[0.95rem] leading-relaxed text-ink-soft">
+        <p className="mt-7 max-w-2xl text-[0.95rem] leading-relaxed text-ink-soft">
           {project.description}
         </p>
 

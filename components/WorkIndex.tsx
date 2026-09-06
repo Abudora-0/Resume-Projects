@@ -48,11 +48,26 @@ export function WorkIndex() {
 
     // Free FLIP-style crossfade where the browser supports it.
     const doc = document as Document & {
-      startViewTransition?: (cb: () => void) => void;
+      startViewTransition?: (cb: () => void) => {
+        finished: Promise<void>;
+        ready: Promise<void>;
+      };
     };
-    if (typeof doc.startViewTransition === "function") {
-      doc.startViewTransition(commit);
-    } else {
+
+    if (typeof doc.startViewTransition !== "function" || document.hidden) {
+      commit();
+      return;
+    }
+
+    // The transition rejects if the document is not in a renderable state or
+    // another transition is already running. That is cosmetic, but an unhandled
+    // rejection still reaches the console, so both promises are swallowed and
+    // the view change happens regardless.
+    try {
+      const transition = doc.startViewTransition(commit);
+      transition.finished?.catch(() => {});
+      transition.ready?.catch(() => {});
+    } catch {
       commit();
     }
   }, []);
@@ -68,9 +83,7 @@ export function WorkIndex() {
 
   return (
     <>
-      <Reveal className="flex flex-wrap items-center justify-between gap-4 border-b border-edge pb-4">
-        <h2 className="font-display text-xl font-medium text-ink">Selected work</h2>
-
+      <Reveal className="flex flex-wrap items-center justify-end gap-3 pb-4">
         <div className="flex flex-wrap items-center gap-3">
           <Select label="Sort" value={sort} options={SORTS} onChange={setSort} />
 

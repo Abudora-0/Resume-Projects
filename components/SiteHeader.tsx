@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Mark } from "@/components/brand/Mark";
+import { Wordmark } from "@/components/brand/Wordmark";
 import { useIsMac } from "@/lib/hooks";
 
 const NAV = [
@@ -48,9 +48,8 @@ export function SiteHeader() {
       }`}
     >
       <div className="shell flex h-16 items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-2.5 text-ink transition-opacity hover:opacity-70">
-          <Mark />
-          <span className="mono-label text-ink">M. Abdullah</span>
+        <a href="#top" className="transition-opacity hover:opacity-70">
+          <Wordmark size="sm" />
         </a>
 
         <nav className="flex items-center gap-5 sm:gap-6">

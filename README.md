@@ -1,10 +1,12 @@
 <div align="center">
 
-<img src=".github/banner.svg" alt="Muhammad Abdullah. Eight products, eight design languages, one engineer." width="100%" />
+<img src=".github/banner.svg" alt="Abudora. Eight products, eight design languages, one engineer." width="100%" />
 
 <br />
 
 **Eight shipped products. Eight deliberately different design languages. One exhibition catalogue.**
+
+[**abudora-resume.vercel.app**](https://abudora-resume.vercel.app)
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-149eca?style=flat-square&logo=react&logoColor=white)](https://react.dev)
@@ -38,11 +40,14 @@ is not asserted, it is demonstrated.
 | | Feature | What it does |
 |---|---|---|
 | 01 | **Accent possession** | Hovering or focusing a project repaints the page chrome in its accent: scrollbar thumb, text selection, focus rings and the scroll progress bar all read one `--pc-active` custom property. Written straight to `documentElement` rather than through React state, because this fires on every pointer move. |
-| 02 | **The Shapeshifter mark** | The logo is a holding frame with eight glyphs cycling through it, one per project, each in that project's real accent, pulled live from `lib/projects.ts`. Globe, cloche, tessellation, caret, ticker, folder, hexagon, Swiss slab. |
+| 02 | **The wordmark** | No icon. The name sets itself one letter at a time with a chartreuse rule drawing underneath. The eight project glyphs (globe, cloche, tessellation, caret, ticker, folder, hexagon, Swiss slab) live on the cards instead, pulled from `lib/projects.ts`. |
 | 03 | **Hero language cycler** | The headline reads "Each one ..." and then actually cycles through all eight design languages, tinted and restyled per project. Width is reserved by a hidden sizer so nothing reflows mid cycle. |
-| 04 | **Command palette** | `Cmd` or `Ctrl` plus `K`. Fuzzy search across every project, every live site, every repo, every section, plus copy email and switch view. Full keyboard control, focus trap, focus restored on close. Hand rolled, no dependency. |
-| 05 | **Two views** | Toggle the index between the editorial list and a dense contact sheet of accent tinted cells. Crossfades through the View Transitions API where the browser supports it, and the choice persists. |
-| 06 | **Themed controls** | Nothing is left to browser defaults. Custom scrollbar, a listbox that opens with a clip path wipe, and odometer counters whose digits physically roll into place. |
+| 04 | **Kinetic headings** | Section headings ride up out of a mask word by word as they scroll into view, with the real string preserved for screen readers. |
+| 05 | **Command palette** | `Cmd` or `Ctrl` plus `K`. Fuzzy search across every project, every live site, every repo, every section, plus copy email and switch view. Full keyboard control, focus trap, focus restored on close. Hand rolled, no dependency. |
+| 06 | **Live previews** | Every project shows a real captured screenshot, and the ones that allow framing open the actual running site in an iframe with a browser chrome bar. The frame mounts only when opened, never eight at once on load. |
+| 07 | **Two views** | Toggle the index between the editorial list and a dense contact sheet of accent tinted cells. Crossfades through the View Transitions API where the browser supports it, and the choice persists. |
+| 08 | **Themed controls** | Nothing is left to browser defaults. Custom scrollbar, a listbox that opens with a clip path wipe, and odometer counters whose digits physically roll into place. |
+| 09 | **Drawn, not decorated** | The hero backdrop, the section rules, the about plate and the footer colophon are all hand drawn inline SVG that parallax to the pointer. No stock art, no image files. |
 
 ## Design notes
 
@@ -80,6 +85,11 @@ curve the indexed projects use, so the catalogue feels related to its contents.
   rather than assumed. Two project reds were lightened to get there.
 - **No em dashes.** Enforced by `npm run check:dashes`, which fails the build if
   one reappears.
+- **No dead links.** `npm run check:links` requests every project URL and fails
+  the build on a 404. Four dead links once shipped to production because project
+  domains were renamed and nothing caught it.
+- **Previews are captured, not embedded live.** The screenshots are committed
+  WebP, so the build needs no network and no browser.
 
 ## Structure
 
@@ -90,8 +100,11 @@ app/
   globals.css       Tokens, @layer base, @layer components
   icon.svg          Favicon
 components/
-  brand/Mark.tsx    The Shapeshifter
-  brand/glyphs.tsx  One glyph per project
+  brand/Wordmark.tsx  The abudora wordmark
+  brand/glyphs.tsx    One glyph per project
+  art/                Hand drawn SVG: hero field, plates, rules
+  ProjectPreview      Screenshot plus live iframe modal
+  KineticHeading      Headings that set themselves
   ui/Select.tsx     Keyboard driven listbox
   ui/Odometer.tsx   Rolling digit counters
   AccentProvider    Accent possession
@@ -105,7 +118,10 @@ lib/
   hooks.ts          Media query, visibility, platform
   storedState.ts    localStorage as an external store
 scripts/
-  check-dashes.mjs  Fails on em and en dashes
+  check-dashes.mjs      Fails on em and en dashes
+  check-links.mjs       Fails on any dead project link
+  capture-previews.mjs  Rebuilds public/previews via headless Chromium
+public/previews/        Seven captured screenshots, WebP
 ```
 
 Adding a ninth project means editing `lib/projects.ts` and nothing else. The
@@ -115,14 +131,14 @@ mark, the cycler, the palette, the stats and both views all read from it.
 
 | # | Project | What it is | Live |
 |---|---|---|---|
-| 01 | [Wanderlens](https://github.com/Abudora-0/wanderlens) | 3D globe travel briefings blended from six open datasets | self-host |
-| 02 | [Dish It](https://github.com/Abudora-0/Dish-It) | Animated recipe kitchen with a full screen cook mode | [live](https://dish-it.vercel.app) |
-| 03 | [Tessera](https://github.com/Abudora-0/tessera) | Generative wallpaper studio, drawn from seeds on canvas | [live](https://tessera-wallpapers.vercel.app) |
+| 01 | [Wanderlens](https://github.com/Abudora-0/wanderlens) | 3D globe travel briefings blended from six open datasets | [live](https://wanderlenss.vercel.app) |
+| 02 | [Dish It](https://github.com/Abudora-0/Dish-It) | Animated recipe kitchen with a full screen cook mode | [live](https://dish-itt.vercel.app) |
+| 03 | [Tessera](https://github.com/Abudora-0/tessera) | Generative wallpaper studio, drawn from seeds on canvas | [live](https://tesseera.vercel.app) |
 | 04 | [CODEREVIEW.SYS](https://github.com/Abudora-0/CODEREVIEW.SYS) | AI code review as a phosphor audit terminal | [live](https://codereview-sys.vercel.app) |
-| 05 | [Kernal](https://github.com/Abudora-0/Kernal) | GitHub activity rendered as a financial market terminal | [live](https://dev-pulse-one-xi.vercel.app) |
-| 06 | [Dossier](https://github.com/Abudora-0/Dossier) | Job application Kanban as a paper dossier desk | [live](https://job-flow-jade.vercel.app) |
+| 05 | [Kernal](https://github.com/Abudora-0/Kernal) | GitHub activity rendered as a financial market terminal | [live](https://kernall.vercel.app) |
+| 06 | [Dossier](https://github.com/Abudora-0/Dossier) | Job application Kanban as a paper dossier desk | [live](https://dosssier.vercel.app) |
 | 07 | [Nexus](https://github.com/Abudora-0/Nexus) | Local first RAG document chat, no cloud, no API keys | local |
-| 08 | [Typeset](https://github.com/Abudora-0/Typeset) | Swiss styled GitHub portfolio generator | [live](https://dev-folio-mocha-five.vercel.app) |
+| 08 | [Typeset](https://github.com/Abudora-0/Typeset) | Swiss styled GitHub portfolio generator | [live](https://typedset.vercel.app) |
 
 ## Running it
 
@@ -141,11 +157,13 @@ Deploys to Vercel as is.
 | `npm run start` | Serve the production build |
 | `npm run lint` | Lint with ESLint |
 | `npm run check:dashes` | Fail on em and en dashes |
-| `npm run verify` | All three, in order |
+| `npm run check:links` | Fail on any dead project link |
+| `npm run previews` | Recapture the project screenshots |
+| `npm run verify` | Dashes, links, lint and build, in order |
 
 ## Contact
 
-**Muhammad Abdullah** &nbsp;&middot;&nbsp; [github.com/Abudora-0](https://github.com/Abudora-0) &nbsp;&middot;&nbsp; m.abdullah21306 [at] gmail.com
+**Muhammad Abdullah** &nbsp;&middot;&nbsp; [GitHub](https://github.com/Abudora-0) &nbsp;&middot;&nbsp; [LinkedIn](https://www.linkedin.com/in/m-abdullah-94367b3a1/) &nbsp;&middot;&nbsp; m.abdullah21306 [at] gmail.com
 
 ## License
 

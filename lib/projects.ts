@@ -27,6 +27,15 @@ export type Project = {
   source: string;
   /** Shown in place of a live link when there is none. */
   runNote?: string;
+  /** Captured screenshot in public/previews. */
+  preview?: string;
+  /**
+   * Whether the live site permits being framed. Dish It sends
+   * X-Frame-Options: SAMEORIGIN, so an iframe of it renders blank.
+   */
+  embeddable?: boolean;
+  /** Deeper route worth capturing instead of the landing page. */
+  previewPath?: string;
 };
 
 export const projects: Project[] = [
@@ -48,8 +57,10 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js", "React", "TypeScript", "three.js", "Motion", "Lenis", "Tailwind CSS v4"],
     accent: "#38e1c4",
+    live: "https://wanderlenss.vercel.app",
     source: "https://github.com/Abudora-0/wanderlens",
-    runNote: "Self-host, zero config",
+    preview: "/previews/wanderlens.webp",
+    embeddable: true,
   },
   {
     slug: "dish-it",
@@ -69,7 +80,9 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Framer Motion", "Sanity CMS", "Tailwind CSS 4", "PWA"],
     accent: "#e8724c",
-    live: "https://dish-it.vercel.app",
+    live: "https://dish-itt.vercel.app",
+    preview: "/previews/dish-it.webp",
+    embeddable: false,
     source: "https://github.com/Abudora-0/Dish-It",
   },
   {
@@ -90,7 +103,9 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Canvas 2D", "Zustand", "simplex-noise", "Tailwind CSS v4"],
     accent: "#8b7bff",
-    live: "https://tessera-wallpapers.vercel.app",
+    live: "https://tesseera.vercel.app",
+    preview: "/previews/tessera.webp",
+    embeddable: true,
     source: "https://github.com/Abudora-0/tessera",
   },
   {
@@ -112,6 +127,8 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "Monaco Editor", "Groq API", "Llama 3.3 70B"],
     accent: "#ffb000",
     live: "https://codereview-sys.vercel.app",
+    preview: "/previews/codereview-sys.webp",
+    embeddable: true,
     source: "https://github.com/Abudora-0/CODEREVIEW.SYS",
   },
   {
@@ -132,7 +149,10 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS 3", "NextAuth.js", "PostgreSQL", "Prisma 5", "Recharts"],
     accent: "#2ee889",
-    live: "https://dev-pulse-one-xi.vercel.app",
+    live: "https://kernall.vercel.app",
+    preview: "/previews/kernal.webp",
+    embeddable: true,
+    previewPath: "/u/Abudora-0",
     source: "https://github.com/Abudora-0/Kernal",
   },
   {
@@ -153,7 +173,9 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS 3", "NextAuth.js", "PostgreSQL", "Prisma 5", "dnd-kit", "Recharts"],
     accent: "#d8a657",
-    live: "https://job-flow-jade.vercel.app",
+    live: "https://dosssier.vercel.app",
+    preview: "/previews/dossier.webp",
+    embeddable: true,
     source: "https://github.com/Abudora-0/Dossier",
   },
   {
@@ -195,7 +217,10 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 16", "React", "TypeScript", "Tailwind CSS 4", "GitHub REST API"],
     accent: "#f04a35",
-    live: "https://dev-folio-mocha-five.vercel.app",
+    live: "https://typedset.vercel.app",
+    preview: "/previews/typeset.webp",
+    embeddable: true,
+    previewPath: "/u/Abudora-0",
     source: "https://github.com/Abudora-0/Typeset",
   },
 ];
@@ -204,3 +229,8 @@ export const projects: Project[] = [
 export const techCount = new Set(projects.flatMap((p) => p.stack)).size;
 
 export const liveCount = projects.filter((p) => p.live).length;
+
+/** Contact details, shared by the page, the footer and the command palette. */
+export const EMAIL = "m.abdullah21306@gmail.com";
+export const GITHUB = "https://github.com/Abudora-0";
+export const LINKEDIN = "https://www.linkedin.com/in/m-abdullah-94367b3a1/";

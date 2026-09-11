@@ -24,7 +24,7 @@ const mono = JetBrains_Mono({
 
 const SITE = "https://abudora-resume.vercel.app";
 
-const TITLE = "Abudora, portfolio of Muhammad Abdullah";
+const TITLE = "Muhammad Abdullah, Frontend & Full-Stack Engineer";
 const DESCRIPTION =
   "Eight shipped products, each built inside its own deliberate design language. An exhibition catalogue in Next.js and TypeScript, with no animation dependencies.";
 

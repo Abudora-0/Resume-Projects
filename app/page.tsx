@@ -313,17 +313,12 @@ export default function Home() {
                   ["Display", "Fraunces"],
                   ["Text", "Inter"],
                   ["Mono", "JetBrains Mono"],
-                  ["Stack", "Next.js, Tailwind"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between gap-3">
                     <dt className="text-ink-faint">{k}</dt>
                     <dd>{v}</dd>
                   </div>
                 ))}
-                <div className="flex justify-between gap-3">
-                  <dt className="text-ink-faint">Anim deps</dt>
-                  <dd className="text-accent">none</dd>
-                </div>
               </dl>
             </div>
 
@@ -335,7 +330,9 @@ export default function Home() {
           <div className="border-t border-edge">
             <div className="shell flex flex-col items-center justify-between gap-3 py-6 sm:flex-row">
               <p className="mono-label">2026 Muhammad Abdullah</p>
-              <p className="mono-label">Hand built, no animation dependencies</p>
+              <a href="#top" className="mono-label transition-colors hover:text-ink">
+                Back to top
+              </a>
             </div>
           </div>
         </footer>

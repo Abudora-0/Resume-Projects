@@ -181,14 +181,20 @@
   .wm-sm .wm-letters { font-size: 1.15rem; }
   .wm-lg .wm-letters { font-size: 2.1rem; }
   .wm-xl .wm-letters { font-size: 3rem; }
+  .wm-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
+  }
   .wm-letter { display: inline-block; }
   .wm.is-setting .wm-letter {
-    opacity: 0;
-    transform: translateY(0.34em);
-    animation: wmLetter 0.55s var(--ease) forwards;
+    transform: translateY(100%);
+    animation: wmLetter 0.6s var(--ease) forwards;
   }
   @keyframes wmLetter {
-    to { opacity: 1; transform: none; }
+    to { transform: none; }
   }
   .wm-rule {
     display: block;
@@ -201,7 +207,7 @@
   .wm-sm .wm-rule { height: 1.5px; }
   .wm.is-setting .wm-rule {
     transform: scaleX(0);
-    animation: wmRule 0.7s var(--ease) 0.42s forwards;
+    animation: wmRule 0.6s var(--ease) 0.75s forwards;
   }
   @keyframes wmRule {
     to { transform: scaleX(1); }

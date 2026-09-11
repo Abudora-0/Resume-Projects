@@ -9,16 +9,25 @@
 <path d="M40 380h18"/><path d="M40 380v-18"/>
 <path d="M1240 380h-18"/><path d="M1240 380v-18"/>
 </g>
+<defs>
+<clipPath id="wl0"><rect x="92" y="108" width="82" height="94"/></clipPath>
+<clipPath id="wl1"><rect x="166" y="108" width="82" height="94"/></clipPath>
+<clipPath id="wl2"><rect x="240" y="108" width="82" height="94"/></clipPath>
+<clipPath id="wl3"><rect x="314" y="108" width="82" height="94"/></clipPath>
+<clipPath id="wl4"><rect x="388" y="108" width="82" height="94"/></clipPath>
+<clipPath id="wl5"><rect x="462" y="108" width="68" height="94"/></clipPath>
+<clipPath id="wl6"><rect x="522" y="108" width="82" height="94"/></clipPath>
+</defs>
 <g font-family="Georgia, 'Times New Roman', Times, serif" font-size="104" fill="#f2f0ea">
-<text x="96" y="196" opacity="0">a<animate attributeName="opacity" from="0" to="1" begin="0.15s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.15s" dur="0.5s" fill="freeze"/></text>
-<text x="170" y="196" opacity="0">b<animate attributeName="opacity" from="0" to="1" begin="0.24s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.24s" dur="0.5s" fill="freeze"/></text>
-<text x="244" y="196" opacity="0">u<animate attributeName="opacity" from="0" to="1" begin="0.33s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.33s" dur="0.5s" fill="freeze"/></text>
-<text x="318" y="196" opacity="0">d<animate attributeName="opacity" from="0" to="1" begin="0.42s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.42s" dur="0.5s" fill="freeze"/></text>
-<text x="392" y="196" opacity="0">o<animate attributeName="opacity" from="0" to="1" begin="0.51s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.51s" dur="0.5s" fill="freeze"/></text>
-<text x="466" y="196" opacity="0">r<animate attributeName="opacity" from="0" to="1" begin="0.60s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.60s" dur="0.5s" fill="freeze"/></text>
-<text x="526" y="196" opacity="0">a<animate attributeName="opacity" from="0" to="1" begin="0.69s" dur="0.5s" fill="freeze"/><animate attributeName="y" from="214" to="196" begin="0.69s" dur="0.5s" fill="freeze"/></text>
+<g clip-path="url(#wl0)"><text x="96" y="290">a<animate attributeName="y" from="290" to="196" begin="0.15s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
+<g clip-path="url(#wl1)"><text x="170" y="290">b<animate attributeName="y" from="290" to="196" begin="0.24s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
+<g clip-path="url(#wl2)"><text x="244" y="290">u<animate attributeName="y" from="290" to="196" begin="0.33s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
+<g clip-path="url(#wl3)"><text x="318" y="290">d<animate attributeName="y" from="290" to="196" begin="0.42s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
+<g clip-path="url(#wl4)"><text x="392" y="290">o<animate attributeName="y" from="290" to="196" begin="0.51s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
+<g clip-path="url(#wl5)"><text x="466" y="290">r<animate attributeName="y" from="290" to="196" begin="0.60s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
+<g clip-path="url(#wl6)"><text x="526" y="290">a<animate attributeName="y" from="290" to="196" begin="0.69s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></text></g>
 </g>
-<rect x="96" y="214" width="0" height="5" fill="#c4f042"><animate attributeName="width" from="0" to="504" begin="0.75s" dur="0.7s" fill="freeze"/></rect>
+<rect x="96" y="214" width="0" height="5" fill="#c4f042"><animate attributeName="width" from="0" to="504" begin="0.85s" dur="0.6s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
 <text x="96" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" letter-spacing="4.2" fill="#85827a">PORTFOLIO OF MUHAMMAD ABDULLAH</text>
 <text x="96" y="304" font-family="Georgia, 'Times New Roman', Times, serif" font-size="26" fill="#f2f0ea">Eight products. Eight design languages. One engineer<tspan fill="#c4f042">.</tspan></text>
 <g transform="translate(1030,118) scale(2.1)">

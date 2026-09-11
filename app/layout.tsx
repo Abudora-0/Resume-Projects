@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { AccentProvider } from "@/components/AccentProvider";
+import { CustomScrollbar } from "@/components/ui/CustomScrollbar";
 
 const display = Fraunces({
   variable: "--font-fraunces",
@@ -77,13 +78,18 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} ${mono.variable}`}
     >
       <head>
-        {/* Scroll reveals start hidden; without JS they must not stay that way. */}
+        {/* Scroll reveals start hidden; without JS they must not stay that way.
+            The custom scrollbar is JS drawn, so without JS give the native one
+            back rather than leave the page with no scrollbar at all. */}
         <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important}.cyc-item:first-of-type{opacity:1!important;transform:none!important}`}</style>
+          <style>{`.reveal{opacity:1!important;transform:none!important}.cyc-item:first-of-type{opacity:1!important;transform:none!important}html{scrollbar-width:auto!important}::-webkit-scrollbar{display:block!important;width:12px!important;height:12px!important}`}</style>
         </noscript>
       </head>
       <body>
-        <AccentProvider>{children}</AccentProvider>
+        <AccentProvider>
+          <CustomScrollbar />
+          {children}
+        </AccentProvider>
       </body>
     </html>
   );

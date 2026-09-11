@@ -69,37 +69,16 @@
     transition: outline-color 0.35s var(--ease);
   }
 
-  /* ---- scrollbar, themed and possessable ---- */
-  @supports (scrollbar-width: thin) {
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: var(--pc-active) var(--bg-sunken);
-    }
+  /* ---- native scrollbar: hidden, not themed ----
+     Windows 11's Fluent overlay scrollbar renders its own arrow buttons
+     outside the page's box model, so no ::-webkit-scrollbar-button CSS can
+     reach them, hiding the whole native scrollbar and replacing it with the
+     hand rolled one below (see .cscroll) is the only way to guarantee no
+     stray browser chrome, on any platform. */
+  html {
+    scrollbar-width: none;
   }
   ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--bg-sunken);
-    border-left: 1px solid var(--edge);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--pc-active);
-    border: 3px solid var(--bg-sunken);
-    border-radius: 999px;
-    transition: background 0.35s var(--ease);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    border-width: 2px;
-  }
-  ::-webkit-scrollbar-corner {
-    background: var(--bg-sunken);
-  }
-  /* Chromium on Windows draws up/down arrow buttons at each end of the track
-     by default. Nothing else in this stylesheet suppresses them, so they were
-     the one piece of browser chrome the theme never reached. */
-  ::-webkit-scrollbar-button {
     display: none;
     width: 0;
     height: 0;
@@ -533,6 +512,32 @@
       color 0.25s var(--ease);
   }
   .foot-icon:hover { border-color: var(--pc-active); color: var(--ink); }
+
+  /* ---- custom scrollbar ---- */
+  .cscroll-track {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    width: 12px;
+    background: var(--bg-sunken);
+    border-left: 1px solid var(--edge);
+  }
+  .cscroll-thumb {
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    border-radius: 999px;
+    background: var(--pc-active);
+    cursor: pointer;
+    transition: background 0.35s var(--ease);
+  }
+  .cscroll-track:hover .cscroll-thumb,
+  .cscroll-thumb.is-dragging {
+    left: 2px;
+    right: 2px;
+  }
 
   /* ---- header ---- */
   .hdr-progress {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/hooks";
+import { observeOnce } from "@/lib/observerPool";
 
 /**
  * Digit column roll. Each digit is a strip of 0 to 9 inside a 1em tall window
@@ -28,19 +29,7 @@ export function Odometer({ value, className = "" }: { value: number; className?:
       return () => window.clearTimeout(id);
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setRolled(true);
-            observer.disconnect();
-          }
-        }
-      },
-      { threshold: 0.4 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
+    return observeOnce(node, () => setRolled(true), { threshold: 0.4 });
   }, [reduce]);
 
   const digits = String(value).split("");

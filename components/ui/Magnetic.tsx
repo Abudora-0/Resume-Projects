@@ -50,8 +50,8 @@ export function Magnetic({
       node.style.setProperty("--mgy", "0px");
     };
 
-    node.addEventListener("pointermove", onMove);
-    node.addEventListener("pointerleave", onLeave);
+    node.addEventListener("pointermove", onMove, { passive: true });
+    node.addEventListener("pointerleave", onLeave, { passive: true });
     return () => {
       node.removeEventListener("pointermove", onMove);
       node.removeEventListener("pointerleave", onLeave);

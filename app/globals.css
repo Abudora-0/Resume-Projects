@@ -256,7 +256,7 @@
     height: auto;
     color: var(--ink);
   }
-  .colophon-plate { max-width: 20rem; }
+  .colophon-plate { max-width: 20rem; margin-inline: auto; }
 
   /* ---- kinetic headings ---- */
   .kin { display: flex; flex-wrap: wrap; gap: 0 0.28em; }
@@ -568,6 +568,12 @@
   .cyc {
     position: relative;
     display: inline-grid;
+    /* Every phrase shares this one grid cell (see .cyc-item below), and they
+       do not all share a font or size. Without baseline alignment, Grid's
+       default stretch positions each item from the top of the cell instead
+       of by its own text baseline, so a smaller mono phrase visibly drops
+       relative to the surrounding serif text. */
+    align-items: baseline;
     vertical-align: baseline;
     max-width: 100%;
   }
@@ -807,6 +813,7 @@
   }
   .cp-input {
     flex: 1;
+    min-width: 0;
     background: transparent;
     border: 0;
     outline: none;
@@ -859,6 +866,10 @@
   }
   .cp-label {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 0.875rem;
   }
   .cp-hint {

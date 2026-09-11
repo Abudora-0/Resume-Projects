@@ -21,16 +21,6 @@
 
 ---
 
-## Muhammad Abdullah
-
-Frontend and full-stack engineer. This repository is the source for
-[abudora-resume.vercel.app](https://abudora-resume.vercel.app), an exhibition
-catalogue indexing eight shipped products, each one built inside its own
-deliberate visual system rather than a shared component kit. Zero backend
-static apps, full-stack products with a real database and auth, and a
-local-first RAG pipeline are all represented below, with a live screenshot,
-the design language, the stack and the links for each.
-
 [Wanderlens](#wanderlens) &nbsp;&middot;&nbsp; [Dish It](#dish-it) &nbsp;&middot;&nbsp; [Tessera](#tessera) &nbsp;&middot;&nbsp; [CODEREVIEW.SYS](#codereview-sys) &nbsp;&middot;&nbsp; [Kernal](#kernal) &nbsp;&middot;&nbsp; [Dossier](#dossier) &nbsp;&middot;&nbsp; [Nexus](#nexus) &nbsp;&middot;&nbsp; [Typeset](#typeset)
 
 ---
@@ -215,11 +205,12 @@ Enter any GitHub username and get a print-styled profile page in seconds: a sear
 
 ## About this catalogue
 
-The site indexing the work above is its own small piece of craft: an exhibition
-catalogue theme where hovering a project repaints the page chrome in that
-project's own accent, right down to the scrollbar. It is a Next.js 16 app with
-no animation library and no UI kit, everything hand rolled in CSS and a few
-small hooks, built by the same person as the eight products it indexes.
+This site indexing the work above is its own small piece of craft: an
+exhibition catalogue theme where hovering a project repaints the page chrome
+in that project's own accent, right down to the scrollbar. I built it as a
+Next.js 16 app with no animation library and no UI kit, everything hand
+rolled in CSS and a few small hooks, the same way I built the eight products
+above.
 
 ```bash
 npm install
@@ -240,7 +231,7 @@ Then open <http://localhost:3000>. No environment variables, no database.
 
 ## Contact
 
-**Muhammad Abdullah** &nbsp;&middot;&nbsp; [GitHub](https://github.com/Abudora-0) &nbsp;&middot;&nbsp; [LinkedIn](https://www.linkedin.com/in/m-abdullah-94367b3a1/) &nbsp;&middot;&nbsp; m.abdullah21306 [at] gmail.com
+[GitHub](https://github.com/Abudora-0) &nbsp;&middot;&nbsp; [LinkedIn](https://www.linkedin.com/in/m-abdullah-94367b3a1/) &nbsp;&middot;&nbsp; [m.abdullah21306@gmail.com](mailto:m.abdullah21306@gmail.com)
 
 ## License
 
